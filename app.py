@@ -26,3 +26,7 @@ async def route_info(object: InfoRouteObject):
         return JSONResponse(content=new_data)
 
     return JSONResponse(content={})
+
+@app.get("/", response_class=HTMLResponse)
+async def index(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request, "refresh_time_in_ms": REFRESH_TIME_IN_MS,})
