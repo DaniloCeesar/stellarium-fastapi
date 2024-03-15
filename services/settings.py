@@ -2,7 +2,7 @@ from decouple import config
 
 
 APP_NAME = config("APP_NAME", "App")
-APP_VERSION = config("APP_VERSION", "1.0")
+APP_VERSION = config("APP_VERSION", "1.1.0")
 TEMPLATES_DIR = config("TEMPLATES_DIR", "templates")
 
 STELLARIUM_REMOTECONTROL_HOST = config("STELLARIUM_REMOTECONTROL_HOST", "http://localhost")

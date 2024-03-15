@@ -5,7 +5,7 @@ from fastapi.templating import Jinja2Templates
 
 from models.FindRouteObject import FindRouteObject
 from models.InfoRouteObject import InfoRouteObject
-from services.settings import REFRESH_TIME_IN_MS, TEMPLATES_DIR
+from services.settings import APP_VERSION, REFRESH_TIME_IN_MS, TEMPLATES_DIR
 from services.stellarium_api import get_stellarium_object_find, get_stellarium_object_info
 
 
@@ -31,4 +31,4 @@ async def route_info(object: InfoRouteObject):
 
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
-    return templates.TemplateResponse("app.html", {"request": request, "refresh_time_in_ms": REFRESH_TIME_IN_MS,})
+    return templates.TemplateResponse("app.html", {"request": request, "refresh_time_in_ms": REFRESH_TIME_IN_MS, "app_version": APP_VERSION,})
