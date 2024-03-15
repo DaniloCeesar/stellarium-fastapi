@@ -48,7 +48,7 @@
                     countdownElement.innerHTML = '0s';
                     return;
                 }
-                countdownElement.innerHTML = Math.floor(remainingSeconds/1000) + 's';
+                countdownElement.innerHTML = Math.floor(remainingSeconds / 1000) + 's';
                 remainingSeconds--;
             }, 1000);
 
@@ -138,7 +138,7 @@
             document.getElementById('countdown').innerHTML = "0s";
 
             console.log('Refresh loop stopped.');
-        })
+        });
     </script>
 </body>
 </html>

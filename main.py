@@ -29,4 +29,4 @@ async def route_info(object: InfoRouteObject):
 
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request, "refresh_time_in_ms": REFRESH_TIME_IN_MS,})
+    return templates.TemplateResponse("app.html", {"request": request, "refresh_time_in_ms": REFRESH_TIME_IN_MS,})

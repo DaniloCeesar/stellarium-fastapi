@@ -39,7 +39,7 @@ This repository provides a web interface, made using [FastAPI framework](https:/
 3. `cd stellarium-fastapi` — change the current directory to this project source code;
 4. `cp .env.example .env` — generate a new environment file that will contain your project's environment variables;
 5. `pip install -r requirements.txt` — install the dependencies from `requirements.txt` file into project's folder;
-6. `uvicorn app:app --reload` — run the development server. The URL address and port will be displayed in your terminal.
+6. `uvicorn main:app --reload` — run the development server. The URL address and port will be displayed in your terminal.
 
 ## 👥 Attributions
 
