@@ -31,13 +31,21 @@ function fetch_object_info() {
         body: JSON.stringify({ astro_name: astro_name, }),
     })
         .then(response => response.json())
-        .then(data => {
-            console.log('Updated object data:', data);
+        .then(response => {
+            if (response.success == true) {
+                console.log('Updated object data:', response.data);
 
-            document.getElementById('timestamp').innerHTML = new Date().toLocaleString();
-            document.getElementById('result').innerHTML = JSON.stringify(data, null, 2);
+                document.getElementById('timestamp').innerHTML = new Date().toLocaleString();
+                document.getElementById('results').innerHTML = JSON.stringify(response.data, null, 2);
 
-            document.getElementById('stop-btn').removeAttribute('disabled');
+                document.getElementById('stop-btn').removeAttribute('disabled');
+                document.getElementById('alert-error').style.display = 'none';
+                document.getElementById('results-container').style.display = 'block';
+            } else {
+                console.error('Failed to fetch object info. A response was returned, but with no data.');
+                document.getElementById('alert-error').style.display = 'block';
+                document.getElementById('results-container').style.display = 'none';
+            }
         })
         .catch((error) => {
             console.error('Error:', error);
@@ -56,10 +64,14 @@ function fetch_object_find() {
         body: JSON.stringify({ astro_name: astro_name, }),
     })
         .then(response => response.json())
-        .then(data => {
-            console.log('Found object names:', data);
+        .then(response => {
+            if (response.success == true) {
+                console.log('Found object names:', response.data);
 
-            document.getElementById('other_data').innerHTML = data.join(", ");
+                document.getElementById('other_data').innerHTML = response.data.join(", ");
+            } else {
+                console.error('Failed to fetch object names. A response was returned, but with no data.');
+            }
         })
         .catch((error) => {
             console.error('Error:', error);
@@ -74,6 +86,8 @@ function start_refresh_loop() {
         clearInterval(countdownInterval); // Clear the previous countdown
     }
     countdownInterval = startCountdown(REFRESH_TIME_IN_MS);
+
+    document.getElementById('countdown-container').style.display = 'inline';
 }
 
 document.getElementById('object_form').addEventListener('submit', function (event) {
@@ -99,6 +113,7 @@ document.getElementById('stop-btn').addEventListener('click', function (event) {
     clearInterval(refreshInterval);
 
     document.getElementById('stop-btn').setAttribute('disabled', true);
+    document.getElementById('countdown-container').style.display = 'none';
     document.getElementById('countdown').innerHTML = "0s";
 
     console.log('Refresh loop stopped.');

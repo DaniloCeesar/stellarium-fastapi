@@ -19,19 +19,25 @@
     </form>
 
     <hr />
-    <h2>Results</h2>
-    <p>
-        Other names:
-        <span id="other_data"></span>
-    </p>
-    <p>
-        Last update:
-        <span id="timestamp"></span>
-        <span style="color: gray; font-style: italic;">&nbsp;(refreshing in <span id="countdown">0s</span>)</span>
-    </p>
+    <div id="results-container" style="display: none;">
+        <h2>Results</h2>
+        <p>
+            Other names:
+            <span id="other_data"></span>
+        </p>
+        <p>
+            Last update:
+            <span id="timestamp"></span>
+            <span id="countdown-container" style="color: gray; font-style: italic;">&nbsp;(refreshing in <span id="countdown">0s</span>)</span>
+        </p>
 
-    <hr />
-    <pre id="result"></pre>
+        <p>Full information:</p>
+        <pre id="results"></pre>
+    </div>
+
+    <div id="alert-error" style="display: none;">
+        An error occurred. Please, check if your Stellarium is up and running, and try again.
+    </div>
 
     <script type="text/javascript" src="/static/app.js"></script>
 </body>
