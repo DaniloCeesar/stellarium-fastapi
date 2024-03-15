@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse, HTMLResponse
+from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 from models.FindRouteObject import FindRouteObject
@@ -9,6 +10,7 @@ from services.stellarium_api import get_stellarium_object_find, get_stellarium_o
 
 
 app = FastAPI()
+app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory=TEMPLATES_DIR)
 
 @app.post("/find")
